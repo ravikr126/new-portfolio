@@ -1,5 +1,5 @@
 import { FaLocationArrow } from "react-icons/fa6";
-
+//32:00
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
