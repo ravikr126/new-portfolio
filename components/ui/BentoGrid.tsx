@@ -1,5 +1,5 @@
 
-"use client";
+"use client";   //bento grid complete
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
