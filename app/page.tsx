@@ -15,7 +15,7 @@ export default function Home() {
         <Hero />
         <Grid />
         {/* <FloatingDock /> */}
-        <RecentProjects />
+        <RecentProjects />  
       </div>
     </main>
   );
