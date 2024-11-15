@@ -6,6 +6,7 @@ import { FooterFloatingDock } from "@/components/FooterFloatingDock";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
+import Techstack from "@/components/Techstack";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
 import Image from "next/image";
@@ -17,7 +18,7 @@ export default function Home() {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
-
+        <Techstack />
         <RecentProjects />
         <Clients />
         <Experience />

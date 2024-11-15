@@ -169,38 +169,95 @@ export const testimonials = [
 
 ];
 
-// export const companies = [
-//   {
-//     id: 1,
-//     name: "cloudinary",
-//     img: "/cloud.svg",
-//     nameImg: "/cloudName.svg",
-//   },
-//   {
-//     id: 2,
-//     name: "appwrite",
-//     img: "/app.svg",
-//     nameImg: "/appName.svg",
-//   },
-//   {
-//     id: 3,
-//     name: "HOSTINGER",
-//     img: "/host.svg",
-//     nameImg: "/hostName.svg",
-//   },
-//   {
-//     id: 4,
-//     name: "stream",
-//     img: "/s.svg",
-//     nameImg: "/streamName.svg",
-//   },
-//   {
-//     id: 5,
-//     name: "docker.",
-//     img: "/dock.svg",
-//     nameImg: "/dockerName.svg",
-//   },
-// ];
+export const companies = [
+  {
+    id: 1,
+    name: "React",
+    img: "/react.svg",
+  },
+  {
+    id: 2,
+    name: "Nextjs",
+    img: "/nextjs.svg",
+  },
+  {
+    id: 3,
+    name: "Javascript",
+    img: "/javascript.svg",
+  },
+  {
+    id: 4,
+    name: "HTML",
+    img: "/html.svg",
+  },
+  {
+    id: 5,
+    name: "CSS",
+    img: "/css.svg",
+  },
+  {
+    id: 6,
+    name: "Tailwind Css",
+    img: "/tailwind.svg",
+  },
+  {
+    id: 7,
+    name: "Bootstrap",
+    img: "/bootstrap.svg",
+  },
+  {
+    id: 8,
+    name: "Git",
+    img: "/git1.svg",
+  },
+  {
+    id: 9,
+    name: "Github",
+    img: "/github.svg",
+  },
+  {
+    id: 10,
+    name: "AWS",
+    img: "/aws.svg",
+  },
+  {
+    id: 11,
+    name: "Cpp",
+    img: "/cpp.svg",
+  },
+  {
+    id: 12,
+    name: "Nodejs",
+    img: "/nodejs.svg",
+  },
+  {
+    id: 13,
+    name: "Express",
+    img: "/express.svg",
+  },
+  {
+    id: 14,
+    name: "MongoDB",
+    img: "/mongodb.svg",
+  },
+  {
+    id: 15,
+    name: "SQL",
+    img: "/sql.svg",
+  },
+  {
+    id: 16,
+    name: "docker.",
+    img: "/dock.svg",
+  },
+  {
+    id: 17,
+    name: "Typescript",
+    img: "/ts.svg",
+  },
+];
+
+
 
 export const workExperience = [
   {
