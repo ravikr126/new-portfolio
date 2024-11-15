@@ -53,6 +53,17 @@ const Hero = () => {
       <div className=" flex justify-center relative my-20 z-10">
         <div className=" max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <div className="flex flex-col lg:flex-row items-center lg:items-center lg:space-x-8">
+             {/* Image Section */}
+             <div className=" lg:w-1/2 flex justify-center lg:justify-end items-center relative">
+              <img
+                src="/myimg.png"
+                alt="Ravi Kumar"
+                className="w-[80%] md:w-[60%] lg:w-full object-cover rounded-lg shadow-lg transform hidden lg:block pb-5 transition-transform"
+                style={{ transformOrigin: "center center" }}
+              />
+            </div>
+
+            
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left mb-6 lg:mb-0">
               <h1 className="uppercase tracking-widest text-lg font-bold text-blue-100">
@@ -63,19 +74,11 @@ const Hero = () => {
                 className="text-center lg:text-left text-[32px] md:text-4xl lg:text-5xl"
               />
               <p className="text-center lg:text-left md:tracking-wider mt-4 text-sm md:text-lg lg:text-xl">
-                Hi! I&apos;m Ravi, a Next.js and MERN Developer based in India.
+                Hi! I&apos;m Ravi, a Full-Stack Developer based in India .
               </p>
             </div>
 
-            {/* Image Section */}
-            <div className=" lg:w-1/2 flex justify-center lg:justify-end items-center relative">
-              <img
-                src="/myimg.png"
-                alt="Ravi Kumar"
-                className="w-[80%] md:w-[60%] lg:w-full object-cover rounded-lg shadow-lg transform hidden lg:block pb-5 transition-transform"
-                style={{ transformOrigin: "center center" }}
-              />
-            </div>
+           
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">

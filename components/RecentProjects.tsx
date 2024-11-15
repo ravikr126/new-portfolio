@@ -13,7 +13,7 @@ const PinContainer = dynamic(
 
 const RecentProjects = () => {
   return (
-    <div className="py-20">
+    <section className="py-20" id='projects'>
       <h1 className="heading">
         A small selection of{" "}
         <span className="text-purple">recent projects</span>
@@ -88,7 +88,7 @@ const RecentProjects = () => {
           />
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 
