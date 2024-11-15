@@ -5,6 +5,13 @@ export const navItems = [
   { name: "Contact", link: "#contact" },
 ];
 
+export const GreetingWords = [
+  "Developers",
+  "Hiring Managers",
+  "Supportes",
+  "Fellowmates",
+];
+
 export const gridItems = [
   {
     id: 1,
@@ -327,3 +334,6 @@ export const products = [
       "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
   },
 ];
+
+
+

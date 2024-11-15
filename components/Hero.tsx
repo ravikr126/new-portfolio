@@ -4,14 +4,31 @@ import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import { FlipWords } from "./ui/FlipWords";
-
-
+import { TypewriterEffectSmooth } from "./ui/TypewritterEffect";
+import { GreetingWords } from "@/data";
+import Link from "next/link";
 const Hero = () => {
-  const words = ["better", "cute", "beautiful", "modern"];
+  //  const words = [
+  //   {
+  //     text: "Build",
+  //   },
+  //   {
+  //     text: "awesome",
+  //   },
+  //   {
+  //     text: "apps",
+  //   },
+  //   {
+  //     text: "with",
+  //   },
+  //   {
+  //     text: "Aceternity.",
+  //     className: "text-blue-500 dark:text-blue-500",
+  //   },
+  // ];
   return (
     <div className="pb-20 pt-36">
       <div>
-      {/* <FlipWords words={words} /> <br /> */}
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
@@ -26,7 +43,6 @@ const Hero = () => {
         className="h-screen w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.03] bg-grid-black-100/[0.2]
        absolute top-0 left-0 flex items-center justify-center"
       >
-       
         <div
           className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
          bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
@@ -35,10 +51,10 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            Dynamic Web Magic with Next.js
+          <p className="uppercase tracking-widest text-lg font-bold text-center text-blue-100 max-w-80">
+            Hi <FlipWords words={GreetingWords} /> 🚀 <br />
           </p>
-
+          {/* <TypewriterEffectSmooth words={words} /> */}
           <TextGenerateEffect
             words="Transforming Concepts into Seamless User Experiences"
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
@@ -47,14 +63,23 @@ const Hero = () => {
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
             Hi! I&apos;m Ravi, a Next.js and MERN Developer based in India .
           </p>
+          <div className="flex flex-wrap justify-center space-x-4 gap-4 md:gap-6">
+            <Link href="https://drive.google.com/drive/u/0/folders/1G6h4x5Kl2Erj8NO3GgO5ES0Y-Q4KnUC5">
+              <MagicButton
+                title="Show my work"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </Link>
 
-          <a href="#about">
-            <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
+            <a href="#about">
+              <MagicButton
+                title="Show my work"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>
