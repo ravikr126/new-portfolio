@@ -230,3 +230,4 @@ export const socialMedia = [
      link: "https://www.linkedin.com/in/theravikr/",
   },
 ];
+
