@@ -1,15 +1,15 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-
+import MagicButton from "./MagicButton";
 import { projects } from "@/data";
 // import { PinContainer } from "./ui/3d-pin";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 const PinContainer = dynamic(
   () => import("./ui/3d-pin").then((mod) => mod.PinContainer),
   { ssr: false }
 );
-
 
 const RecentProjects = () => {
   return (
@@ -24,10 +24,7 @@ const RecentProjects = () => {
             className="sm:h-[41rem]  h-[32rem]  lg:min-h-[32.5rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
             key={item.id}
           >
-            <PinContainer
-              title={item.link}
-              href={item.link}
-            >
+            <PinContainer title={item.link} href={item.link}>
               <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] sm:h-[40vh] h-[30vh] overflow-hidden mb-10">
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
@@ -81,6 +78,15 @@ const RecentProjects = () => {
             </PinContainer>
           </div>
         ))}
+      </div>
+      <div className="flex items-center justify-center">
+        <Link href="/projects">
+          <MagicButton
+            title="Show my work"
+            icon={<FaLocationArrow />}
+            position="right"
+          />
+        </Link>
       </div>
     </div>
   );

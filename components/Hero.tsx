@@ -3,12 +3,15 @@ import { FaLocationArrow } from "react-icons/fa6";
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { FlipWords } from "./ui/FlipWords";
 
 
 const Hero = () => {
+  const words = ["better", "cute", "beautiful", "modern"];
   return (
     <div className="pb-20 pt-36">
       <div>
+      {/* <FlipWords words={words} /> <br /> */}
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="white"
