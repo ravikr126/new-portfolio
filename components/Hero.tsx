@@ -7,6 +7,7 @@ import { FlipWords } from "./ui/FlipWords";
 import { TypewriterEffectSmooth } from "./ui/TypewritterEffect";
 import { GreetingWords } from "@/data";
 import Link from "next/link";
+import { CardSpotlight } from "./ui/CardSpotLight";
 const Hero = () => {
   //  const words = [
   //   {
@@ -49,34 +50,66 @@ const Hero = () => {
         />
       </div>
 
-      <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-lg font-bold text-center text-blue-100 max-w-80">
-            Hi <FlipWords words={GreetingWords} /> 🚀 <br />
-          </p>
-          {/* <TypewriterEffectSmooth words={words} /> */}
-          <TextGenerateEffect
-            words="Transforming Concepts into Seamless User Experiences"
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-          />
+      <div className=" flex justify-center relative my-20 z-10">
+        <div className=" max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+          <div className="flex flex-col lg:flex-row items-center lg:items-center lg:space-x-8">
+            {/* Text Section */}
+            <div className="lg:w-1/2 text-center lg:text-left mb-6 lg:mb-0">
+              <h1 className="uppercase tracking-widest text-lg font-bold text-blue-100">
+                Hi <FlipWords words={GreetingWords} /> 🚀 <br />
+              </h1>
+              <TextGenerateEffect
+                words="Transforming Concepts into Seamless User Experiences"
+                className="text-center lg:text-left text-[32px] md:text-4xl lg:text-5xl"
+              />
+              <p className="text-center lg:text-left md:tracking-wider mt-4 text-sm md:text-lg lg:text-xl">
+                Hi! I&apos;m Ravi, a Next.js and MERN Developer based in India.
+              </p>
+            </div>
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Ravi, a Next.js and MERN Developer based in India .
-          </p>
-          <div className="flex flex-wrap justify-center space-x-4 gap-4 md:gap-6">
-            <Link href="https://drive.google.com/drive/u/0/folders/1G6h4x5Kl2Erj8NO3GgO5ES0Y-Q4KnUC5">
+            {/* Image Section */}
+            <div className=" lg:w-1/2 flex justify-center lg:justify-end items-center relative">
+              <img
+                src="/myimg.png"
+                alt="Ravi Kumar"
+                className="w-[80%] md:w-[60%] lg:w-full object-cover rounded-lg shadow-lg transform hidden lg:block pb-5 transition-transform"
+                style={{ transformOrigin: "center center" }}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">
+            {/* First Button: Link to Google Drive */}
+            <Link
+              href="https://drive.google.com/drive/u/0/folders/1G6h4x5Kl2Erj8NO3GgO5ES0Y-Q4KnUC5"
+              target="_blank"
+              className="w-full sm:w-auto"
+            >
               <MagicButton
-                title="Show my work"
+                title="Resume"
                 icon={<FaLocationArrow />}
                 position="right"
+                otherClasses="
+                      bg-gradient-to-r from-[#3A3A6D] to-[#1E1E3A] 
+                      !text-white font-semibold w-full sm:w-[300px] 
+                      rounded-lg shadow-lg transition-all duration-300 
+                      hover:shadow-2xl hover:from-[#2A2A5A] hover:to-[#14142B]
+    "
               />
             </Link>
 
-            <a href="#about">
+            {/* Second Button: MagicButton (About Section) */}
+            <a href="#about" className="w-full sm:w-auto">
               <MagicButton
                 title="Show my work"
                 icon={<FaLocationArrow />}
                 position="right"
+                otherClasses="
+        
+        !text-white font-semibold w-full sm:w-[300px] 
+        rounded-lg shadow-lg transition-all duration-300 
+        hover:shadow-2xl hover:from-[#00A8E0] hover:to-[#5A56D6]
+      "
               />
             </a>
           </div>
