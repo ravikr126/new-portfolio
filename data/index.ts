@@ -208,12 +208,12 @@ export const companies = [
   {
     id: 8,
     name: "Git",
-    img: "/git1.svg",
+    img: "/git1.png",
   },
   {
     id: 9,
     name: "Github",
-    img: "/github.svg",
+    img: "/github.png",
   },
   {
     id: 10,
@@ -228,7 +228,7 @@ export const companies = [
   {
     id: 12,
     name: "Nodejs",
-    img: "/nodejs.svg",
+    img: "/nodejs.png",
   },
   {
     id: 13,
@@ -254,6 +254,11 @@ export const companies = [
     id: 17,
     name: "Typescript",
     img: "/ts.svg",
+  },
+  {
+    id: 18,
+    name: "Firebase",
+    img: "/firebase.png",
   },
 ];
 
