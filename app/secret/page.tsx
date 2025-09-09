@@ -1,11 +1,11 @@
 'use client'
 
-import SneakerGrid from '@/components/GridBasedShowcase'
-import LetterCanvas from '@/components/LetterCanva/LetterCanvas'
+import SneakerGrid from '@/components/UiEffects/GridBasedShowcase'
+import LetterCanvas from '@/components/UiEffects/LetterCanva/LetterCanvas'
 import dynamic from 'next/dynamic'
 
 // Dynamically import your smart canvas effect component
- const CanvasEffect = dynamic(() => import('@/components/CanvaEffect/CanvaEffects'), {
+ const CanvasEffect = dynamic(() => import('@/components/UiEffects/CanvaEffect/CanvaEffects'), {
    ssr: false,
  })
 
