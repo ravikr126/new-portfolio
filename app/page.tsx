@@ -147,6 +147,38 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Experience (Condensed) */}
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex items-end justify-between mb-10">
+            <div className="space-y-2">
+              <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
+              <p className="text-muted-foreground">Recent roles and impact</p>
+            </div>
+            <a href="/experience" className="text-primary underline text-sm">View all</a>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="text-lg font-semibold">Senior Software Engineer • Company Name</h3>
+              <p className="text-sm text-muted-foreground">Jan 2023 — Present • Remote</p>
+              <ul className="mt-3 space-y-2 list-disc pl-5 text-muted-foreground text-sm">
+                <li>Led development of high-impact features improving conversion by 15%.</li>
+                <li>Mentored engineers and improved code quality guidelines.</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-border bg-card p-6">
+              <h3 className="text-lg font-semibold">Frontend Engineer • Previous Company</h3>
+              <p className="text-sm text-muted-foreground">Jun 2020 — Dec 2022 • Bengaluru, IN</p>
+              <ul className="mt-3 space-y-2 list-disc pl-5 text-muted-foreground text-sm">
+                <li>Built component library used across 4 product teams.</li>
+                <li>Reduced bundle size by 28% via optimization and code-splitting.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import MainHeader from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,35 +15,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-display",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-ui",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Portfolio - Your Name",
-  description: "Full Stack Developer & UI/UX Designer - Creating beautiful, functional, and user-centered digital experiences",
-  keywords: ["portfolio", "developer", "designer", "web development", "UI/UX"],
-  authors: [{ name: "Your Name" }],
-  openGraph: {
-    title: "Portfolio - Your Name",
-    description: "Full Stack Developer & UI/UX Designer",
-    type: "website",
-  },
+  description:
+    "Full Stack Developer & UI/UX Designer - Creating beautiful, functional, and user-centered digital experiences",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          defaultTheme="system"
-          storageKey="portfolio-theme"
-        >
-          <MainHeader/>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased`}>
+        <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
+
+
+          <MainHeader />
+
           {children}
-          <Footer/>
+
+          <Footer />
+
+
         </ThemeProvider>
       </body>
     </html>

@@ -1,6 +1,6 @@
 import React from 'react'
+import Link from 'next/link'
 import { FaHome, FaUser, FaEnvelope, FaCode, FaBriefcase } from 'react-icons/fa'
-import { FloatingNav } from '@/components/ui/floating-navbar'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 type Props = {}
@@ -46,13 +46,13 @@ const MainHeader = (props: Props) => {
           
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
-              <a
+              <Link
                 key={index}
                 href={item.link}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </nav>
           
@@ -61,8 +61,6 @@ const MainHeader = (props: Props) => {
           </div>
         </div>
       </header>
-      
-      <FloatingNav navItems={navItems} />
     </>
   )
 }
