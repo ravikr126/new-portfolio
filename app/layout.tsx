@@ -4,6 +4,8 @@ import "./globals.css";
 import MainHeader from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import SoftCursor from "@/components/ui/SoftCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased`}>
+        <ScrollProgress />
+        <SoftCursor />
         <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
 
 

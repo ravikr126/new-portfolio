@@ -1,80 +1,29 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa'
+import Marquee from '@/components/ui/Marquee'
+import Magnetic from '@/components/ui/Magnetic'
+import Hero from '@/components/sections/Hero'
+import Services from '@/components/sections/Services'
+import Projects from '@/components/sections/Projects'
+import ExperienceStrip from '@/components/sections/ExperienceStrip'
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
+import BlogStrip from '@/components/sections/BlogStrip'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                  Hi, I'm{' '}
-                  <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                    Your Name
-                  </span>
-                </h1>
-                <h2 className="text-xl md:text-2xl text-muted-foreground">
-                  Full Stack Developer & UI/UX Designer
-                </h2>
-              </div>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I create beautiful, functional, and user-centered digital experiences. 
-                With expertise in modern web technologies and a passion for clean code, 
-                I bring ideas to life through thoughtful design and robust development.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                  <FaDownload className="mr-2 h-4 w-4" />
-                  Download Resume
-                </button>
-                
-                <button className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors">
-                  View My Work
-                </button>
-              </div>
-              
-              <div className="flex space-x-4 pt-4">
-                <a
-                  href="https://github.com"
-                  className="p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                  aria-label="GitHub"
-                >
-                  <FaGithub className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  className="p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  className="p-3 rounded-lg border border-border hover:bg-accent transition-colors"
-                  aria-label="Twitter"
-                >
-                  <FaTwitter className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="relative w-full h-96 lg:h-[500px] rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-border overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                <div className="absolute inset-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-6xl">
-                  👨‍💻
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
+
+      {/* Premium Marquee */}
+      <Marquee items={[
+        'Next.js', 'TypeScript', 'GSAP', 'React', 'Node.js', 'TailwindCSS', 'Design Systems', 'UX', 'Animations', 'Accessibility', 'Performance', 'SEO'
+      ]} />
+
+      <Services />
+      <Projects />
+      <ExperienceStrip />
+      <ExperienceTimeline />
+      <BlogStrip />
 
       {/* Skills Section */}
       <section className="py-20 px-4 bg-muted/30">
