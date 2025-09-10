@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { posts } from "@/data/blog";
-
+import { format } from 'date-fns';
 export default function BlogStrip() {
   const latest = posts.slice(0, 3);
   return (
@@ -18,7 +18,9 @@ export default function BlogStrip() {
           {latest.map((p) => (
             <article key={p.slug} className="rounded-xl border border-border bg-card p-6 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold">{p.title}</h3>
-              <div className="text-sm text-muted-foreground">{new Date(p.date).toLocaleDateString()} • {p.readingTime}</div>
+              <div className="text-sm text-muted-foreground">
+                {format(new Date(p.date), 'dd/MM/yyyy')} • {p.readingTime}
+              </div>
               <p className="mt-2 text-muted-foreground text-sm">{p.summary}</p>
             </article>
           ))}
