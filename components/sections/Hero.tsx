@@ -1,7 +1,31 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+// Responsive canvas size hook
+function useResponsiveCanvasSize() {
+  const [size, setSize] = useState({ width: 300, height: 300 });
+  useEffect(() => {
+    function updateSize() {
+      const w = window.innerWidth;
+      if (w < 640) {
+        setSize({ width: 220, height: 220 }); // mobile
+      } else if (w < 1024) {
+        setSize({ width: 350, height: 350 }); // tablet
+      } else {
+        setSize({ width: 500, height: 500 }); // desktop
+      }
+    }
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
 import Magnetic from "@/components/ui/Magnetic";
+import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
+import { BackgroundLines } from "../ui/background-lines";
+import { Vortex } from "../ui/vortex";
+import { PixelatedCanvas } from "../ui/pixelated-canvas";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -9,6 +33,8 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
+  const [backgroundColor, setBackgroundColor] = useState<string>("#fff");
+  const canvasSize = useResponsiveCanvasSize();
 
   useEffect(() => {
     // graceful, CSS-driven reveal
@@ -33,11 +59,35 @@ export default function Hero() {
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    // function to update background color from CSS variable
+    const updateBackgroundColor = () => {
+      const color = getComputedStyle(document.documentElement).getPropertyValue('--background').trim();
+      if (color) setBackgroundColor(color);
+    };
+    updateBackgroundColor();
+
+    // observe theme changes (class changes on <html>)
+    const observer = new MutationObserver(() => {
+      updateBackgroundColor();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <section ref={sectionRef} className="pt-32 pb-20 px-4">
+
+      {/* <BackgroundBeamsWithCollision > */}
+
+
+      {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
+
+
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -85,17 +135,35 @@ export default function Hero() {
             </div>
           </div>
 
-          <div ref={mediaRef} className="relative">
-            <div className="relative w-full h-96 lg:h-[500px] rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-border overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              <div className="absolute inset-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl">
-                👨‍💻
-              </div>
-            </div>
+          <div ref={mediaRef} className="relative flex justify-center items-center w-full">
+            <PixelatedCanvas
+              src="https://assets.aceternity.com/manu-red.png"
+              width={canvasSize.width}
+              height={canvasSize.height}
+              cellSize={3}
+              dotScale={0.9}
+              shape="square"
+              backgroundColor={backgroundColor}
+              dropoutStrength={0.4}
+              interactive
+              distortionStrength={3}
+              distortionRadius={80}
+              distortionMode="swirl"
+              followSpeed={0.2}
+              jitterStrength={4}
+              jitterSpeed={4}
+              sampleAverage
+              tintColor="#FFFFFF"
+              tintStrength={0.2}
+              className="rounded-xl"
+            />
           </div>
         </div>
       </div>
+      {/* </BackgroundLines> */}
+
+      {/* </BackgroundBeamsWithCollision> */}
+
     </section>
   );
 }
