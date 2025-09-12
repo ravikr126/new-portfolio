@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import SoftCursor from "@/components/ui/SoftCursor";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,15 +45,10 @@ export default function RootLayout({
         <ScrollProgress />
         <SoftCursor />
         <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-
-
           <MainHeader />
-
+          <SmoothCursor />
           {children}
-
           <Footer />
-
-
         </ThemeProvider>
       </body>
     </html>

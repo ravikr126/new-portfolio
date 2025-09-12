@@ -44,7 +44,7 @@ export function ThemeToggle() {
         "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
         "hover:bg-accent hover:text-accent-foreground",
         "h-9 w-9",
-        "border border-input bg-background shadow-sm",
+        "border border-input bg-background shadow-sm dark:shadow-lg dark:shadow-white/30",
         "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
         "disabled:pointer-events-none disabled:opacity-50"
       )}

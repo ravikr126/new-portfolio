@@ -22,9 +22,7 @@ function useResponsiveCanvasSize() {
 }
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
 import Magnetic from "@/components/ui/Magnetic";
-import { BackgroundBeamsWithCollision } from "../ui/background-beams-with-collision";
-import { BackgroundLines } from "../ui/background-lines";
-import { Vortex } from "../ui/vortex";
+
 import { PixelatedCanvas } from "../ui/pixelated-canvas";
 
 export default function Hero() {
