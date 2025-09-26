@@ -22,6 +22,7 @@ function useResponsiveCanvasSize() {
 }
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
 import Magnetic from "@/components/ui/Magnetic";
+import { TypeAnimation } from 'react-type-animation';
 
 import { PixelatedCanvas } from "../ui/pixelated-canvas";
 
@@ -79,13 +80,6 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="pt-32 pb-20 px-4">
-
-      {/* <BackgroundBeamsWithCollision > */}
-
-
-      {/* <BackgroundLines className="flex items-center justify-center w-full flex-col px-4"> */}
-
-
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -93,11 +87,21 @@ export default function Hero() {
               <h1 ref={titleRef} className="text-4xl md:text-6xl font-bold leading-tight">
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  Your Name
+                  Ravi Kumar
                 </span>
               </h1>
               <h2 ref={subtitleRef} className="text-xl md:text-2xl text-muted-foreground">
-                Full Stack Developer & UI/UX Designer
+                <TypeAnimation
+                  sequence={[
+                    'Full Stack Developer',
+                    1000,
+                    'Tech Mentor',
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ fontSize: '2em' }}
+                  repeat={Infinity}
+                />
               </h2>
             </div>
 
@@ -115,7 +119,7 @@ export default function Hero() {
               </Magnetic>
               <Magnetic className="inline-block">
                 <a href="#projects" className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors">
-                  View My Work
+                  View My Creativity
                 </a>
               </Magnetic>
             </div>
@@ -135,7 +139,7 @@ export default function Hero() {
 
           <div ref={mediaRef} className="relative flex justify-center items-center w-full">
             <PixelatedCanvas
-              src="https://assets.aceternity.com/manu-red.png"
+              src="https://www.google.com/imgres?q=dot%20pattern&imgurl=https%3A%2F%2Fwww.nicepng.com%2Fpng%2Fdetail%2F153-1532288_pattern-dots-square-grid-patterns-white-polka-dot.png&imgrefurl=https%3A%2F%2Fwww.nicepng.com%2Fourpic%2Fu2q8o0t4o0w7i1i1_pattern-dots-square-grid-patterns-white-polka-dot%2F&docid=E9qnZBuLth0YKM&tbnid=c_BwKFdARMIRWM&vet=12ahUKEwjx05PxxPaPAxXFSmwGHQfTNOQQM3oECCEQAA..i&w=820&h=499&hcb=2&ved=2ahUKEwjx05PxxPaPAxXFSmwGHQfTNOQQM3oECCEQAA"
               width={canvasSize.width}
               height={canvasSize.height}
               cellSize={3}
@@ -158,10 +162,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      {/* </BackgroundLines> */}
-
-      {/* </BackgroundBeamsWithCollision> */}
-
     </section>
   );
 }
