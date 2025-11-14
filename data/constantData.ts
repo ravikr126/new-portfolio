@@ -9,7 +9,7 @@ import {
 import { MdContactMail, MdWork } from "react-icons/md";
 import { ImBlog } from "react-icons/im";
 
-// Navbar 
+// Navbar
 export const Title = "RK";
 
 export const navItems = [
@@ -87,7 +87,7 @@ export const Taglines = [
 
 export const SubTitle =
   " I create refined, performant, and user-centered digital experiences.Blending thoughtful design with robust engineering to ship premium products.";
-
+export const ButtonIcons = ["🚀", "⚡", "🎯", "💻", "⭐"];
 export const ConnectionLink = {
   Resumelink:
     "https://drive.google.com/file/d/12wvL3cr4QRBrkSavrTAsz2k5Y7hpXUiN/view?usp=share_link",
@@ -191,5 +191,3 @@ export const MarqueeData = [
   "AWS",
   "Data Structures and Algorithms",
 ];
-
-
