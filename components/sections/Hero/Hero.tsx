@@ -1,30 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-// Responsive canvas size hook
-function useResponsiveCanvasSize() {
-  const [size, setSize] = useState({ width: 300, height: 300 });
-  useEffect(() => {
-    function updateSize() {
-      const w = window.innerWidth;
-      if (w < 640) {
-        setSize({ width: 220, height: 220 }); // mobile
-      } else if (w < 1024) {
-        setSize({ width: 350, height: 350 }); // tablet
-      } else {
-        setSize({ width: 500, height: 500 }); // desktop
-      }
-    }
-    updateSize();
-    window.addEventListener('resize', updateSize);
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-}
-import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import Magnetic from "@/components/ui/Magnetic";
 import { TypeAnimation } from 'react-type-animation';
-
-import { PixelatedCanvas } from "../ui/pixelated-canvas";
+import { ConnectionLink, SubTitle, Taglines } from "@/data/constantData";
+import { DraggableCardSection } from "./DraggableCard";
+import SocialMediaSection from "@/components/Common/SocialMediaSection";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -33,7 +14,6 @@ export default function Hero() {
   const descRef = useRef<HTMLParagraphElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const [backgroundColor, setBackgroundColor] = useState<string>("#fff");
-  const canvasSize = useResponsiveCanvasSize();
 
   useEffect(() => {
     // graceful, CSS-driven reveal
@@ -79,7 +59,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-32 pb-20 px-4">
+    <section ref={sectionRef} className="pt-32 pb-15 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
@@ -90,14 +70,9 @@ export default function Hero() {
                   Ravi Kumar
                 </span>
               </h1>
-              <h2 ref={subtitleRef} className="text-xl md:text-2xl text-muted-foreground">
+              <h2 ref={subtitleRef} className="text-sm md:text-md text-muted-foreground">
                 <TypeAnimation
-                  sequence={[
-                    'Full Stack Developer',
-                    1000,
-                    'Tech Mentor',
-                    1000,
-                  ]}
+                  sequence={Taglines.flatMap(tag => [tag, 1000])}
                   speed={50}
                   style={{ fontSize: '2em' }}
                   repeat={Infinity}
@@ -106,16 +81,20 @@ export default function Hero() {
             </div>
 
             <p ref={descRef} className="text-lg text-muted-foreground leading-relaxed">
-              I create refined, performant, and user-centered digital experiences.
-              Blending thoughtful design with robust engineering to ship premium products.
+             {SubTitle}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Magnetic className="inline-block">
-                <button className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">
+                <a 
+                  href={ConnectionLink.Resumelink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                >
                   <FaDownload className="mr-2 h-4 w-4" />
                   Download Resume
-                </button>
+                </a>
               </Magnetic>
               <Magnetic className="inline-block">
                 <a href="#projects" className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors">
@@ -123,42 +102,11 @@ export default function Hero() {
                 </a>
               </Magnetic>
             </div>
-
-            <div className="flex space-x-4 pt-2">
-              <a href="https://github.com" className="p-3 rounded-lg border border-border hover:bg-accent transition-colors" aria-label="GitHub">
-                <FaGithub className="h-5 w-5" />
-              </a>
-              <a href="https://linkedin.com" className="p-3 rounded-lg border border-border hover:bg-accent transition-colors" aria-label="LinkedIn">
-                <FaLinkedin className="h-5 w-5" />
-              </a>
-              <a href="https://twitter.com" className="p-3 rounded-lg border border-border hover:bg-accent transition-colors" aria-label="Twitter">
-                <FaTwitter className="h-5 w-5" />
-              </a>
-            </div>
+            <SocialMediaSection/>
           </div>
 
           <div ref={mediaRef} className="relative flex justify-center items-center w-full">
-            <PixelatedCanvas
-              src="https://www.google.com/imgres?q=dot%20pattern&imgurl=https%3A%2F%2Fwww.nicepng.com%2Fpng%2Fdetail%2F153-1532288_pattern-dots-square-grid-patterns-white-polka-dot.png&imgrefurl=https%3A%2F%2Fwww.nicepng.com%2Fourpic%2Fu2q8o0t4o0w7i1i1_pattern-dots-square-grid-patterns-white-polka-dot%2F&docid=E9qnZBuLth0YKM&tbnid=c_BwKFdARMIRWM&vet=12ahUKEwjx05PxxPaPAxXFSmwGHQfTNOQQM3oECCEQAA..i&w=820&h=499&hcb=2&ved=2ahUKEwjx05PxxPaPAxXFSmwGHQfTNOQQM3oECCEQAA"
-              width={canvasSize.width}
-              height={canvasSize.height}
-              cellSize={3}
-              dotScale={0.9}
-              shape="square"
-              backgroundColor={backgroundColor}
-              dropoutStrength={0.4}
-              interactive
-              distortionStrength={3}
-              distortionRadius={80}
-              distortionMode="swirl"
-              followSpeed={0.2}
-              jitterStrength={4}
-              jitterSpeed={4}
-              sampleAverage
-              tintColor="#FFFFFF"
-              tintStrength={0.2}
-              className="rounded-xl"
-            />
+           <DraggableCardSection/>
           </div>
         </div>
       </div>

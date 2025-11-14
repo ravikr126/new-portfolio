@@ -26,7 +26,7 @@ export default function Marquee({ items, speed = 80 }: Props) {
   }, [speed]);
 
   return (
-    <div className="overflow-hidden border-y border-border py-3 select-none">
+    <div className="overflow-hidden border-y py-3 select-none">
       <div className="flex gap-8 whitespace-nowrap will-change-transform" ref={trackRef}>
         {[...items, ...items].map((item, i) => (
           <span key={i} className="text-sm md:text-base text-muted-foreground">

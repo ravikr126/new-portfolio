@@ -1,24 +1,19 @@
-import React from 'react'
-import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from 'react-icons/fa'
-import Marquee from '@/components/ui/Marquee'
-import Magnetic from '@/components/ui/Magnetic'
-import Hero from '@/components/sections/Hero'
-import Services from '@/components/sections/Services'
-import Projects from '@/components/sections/Projects'
-import ExperienceStrip from '@/components/sections/ExperienceStrip'
-import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
-import BlogStrip from '@/components/sections/BlogStrip'
+import React from "react";
+import Marquee from "@/components/ui/Marquee";
+import Hero from "@/components/sections/Hero/Hero";
+import Services from "@/components/sections/Services";
+import Projects from "@/components/sections/Projects";
+import ExperienceStrip from "@/components/sections/ExperienceStrip";
+import ExperienceTimeline from "@/components/sections/ExperienceTimeline";
+import BlogStrip from "@/components/sections/BlogStrip";
+import { MarqueeData } from "@/data/constantData";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
-
       {/* Premium Marquee */}
-      <Marquee items={[
-        'Next.js', 'TypeScript', 'GSAP', 'React', 'Node.js', 'TailwindCSS', 'Design Systems', 'UX', 'Animations', 'Accessibility', 'Performance', 'SEO'
-      ]} />
-
+      <Marquee items={MarqueeData} />
       <Services />
       <Projects />
       <ExperienceStrip />
@@ -29,16 +24,29 @@ export default function Home() {
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Skills & Technologies</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Skills & Technologies
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I work with a variety of technologies to create amazing digital experiences
+              I work with a variety of technologies to create amazing digital
+              experiences
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL',
-              'Tailwind CSS', 'Git', 'Docker', 'AWS', 'Figma', 'JavaScript'
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Node.js",
+              "Python",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Git",
+              "Docker",
+              "AWS",
+              "Figma",
+              "JavaScript",
             ].map((skill, index) => (
               <div
                 key={skill}
@@ -55,12 +63,15 @@ export default function Home() {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Featured Projects
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Here are some of my recent projects that showcase my skills and creativity
+              Here are some of my recent projects that showcase my skills and
+              creativity
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((project, index) => (
               <div
@@ -78,10 +89,11 @@ export default function Home() {
                     Project {project}
                   </h3>
                   <p className="text-muted-foreground">
-                    A brief description of the project and the technologies used to build it.
+                    A brief description of the project and the technologies used
+                    to build it.
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {['React', 'TypeScript', 'Tailwind'].map((tech) => (
+                    {["React", "TypeScript", "Tailwind"].map((tech) => (
                       <span
                         key={tech}
                         className="px-2 py-1 text-xs bg-muted rounded-md"
@@ -105,29 +117,47 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
               <p className="text-muted-foreground">Recent roles and impact</p>
             </div>
-            <a href="/experience" className="text-primary underline text-sm">View all</a>
+            <a href="/experience" className="text-primary underline text-sm">
+              View all
+            </a>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold">Senior Software Engineer • Company Name</h3>
-              <p className="text-sm text-muted-foreground">Jan 2023 — Present • Remote</p>
+              <h3 className="text-lg font-semibold">
+                Senior Software Engineer • Company Name
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Jan 2023 — Present • Remote
+              </p>
               <ul className="mt-3 space-y-2 list-disc pl-5 text-muted-foreground text-sm">
-                <li>Led development of high-impact features improving conversion by 15%.</li>
-                <li>Mentored engineers and improved code quality guidelines.</li>
+                <li>
+                  Led development of high-impact features improving conversion
+                  by 15%.
+                </li>
+                <li>
+                  Mentored engineers and improved code quality guidelines.
+                </li>
               </ul>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold">Frontend Engineer • Previous Company</h3>
-              <p className="text-sm text-muted-foreground">Jun 2020 — Dec 2022 • Bengaluru, IN</p>
+              <h3 className="text-lg font-semibold">
+                Frontend Engineer • Previous Company
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Jun 2020 — Dec 2022 • Bengaluru, IN
+              </p>
               <ul className="mt-3 space-y-2 list-disc pl-5 text-muted-foreground text-sm">
                 <li>Built component library used across 4 product teams.</li>
-                <li>Reduced bundle size by 28% via optimization and code-splitting.</li>
+                <li>
+                  Reduced bundle size by 28% via optimization and
+                  code-splitting.
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </section>
     </main>
-  )
+  );
 }

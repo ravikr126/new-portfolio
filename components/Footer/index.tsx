@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
-
+import {Title} from '@/data/constantData'
 type Props = {}
 
 const Footer = (props: Props) => {
@@ -43,7 +43,7 @@ const Footer = (props: Props) => {
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Portfolio
+              {Title}
             </h3>
             <p className="text-muted-foreground leading-relaxed">
               Creating beautiful, functional, and user-centered digital experiences 

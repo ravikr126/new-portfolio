@@ -29,9 +29,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio - Your Name",
+  title: "Ravi Kumar - Full Stack Developer",
   description:
-    "Full Stack Developer & UI/UX Designer - Creating beautiful, functional, and user-centered digital experiences",
+    "Full Stack Developer creating refined, performant, and user-centered digital experiences.",
 };
 
 export default function RootLayout({
@@ -41,12 +41,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased`}>
-        <ScrollProgress />
-        <SoftCursor />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} antialiased`}
+        suppressHydrationWarning
+      >
         <ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-          <MainHeader />
+          <ScrollProgress />
+          <SoftCursor />
           <SmoothCursor />
+          <MainHeader />
           {children}
           <Footer />
         </ThemeProvider>
