@@ -81,7 +81,7 @@ export const Taglines = [
   "Open Source Contributor",
   "Open Source Mentor",
   "Frontend Specialist",
-  "Performance-Focused Engineer",
+  "Performance-Focused Dev",
   "System Design Enthusiast",
 ];
 
