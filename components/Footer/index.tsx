@@ -1,33 +1,11 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 import {Title} from '@/data/constantData'
+import SocialMediaSection from '../Common/SocialMediaSection'
 type Props = {}
 
 const Footer = (props: Props) => {
   const currentYear = new Date().getFullYear()
-
-  const socialLinks = [
-    {
-      name: 'GitHub',
-      href: 'https://github.com',
-      icon: FaGithub,
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://linkedin.com',
-      icon: FaLinkedin,
-    },
-    {
-      name: 'Twitter',
-      href: 'https://twitter.com',
-      icon: FaTwitter,
-    },
-    {
-      name: 'Email',
-      href: 'mailto:your.email@example.com',
-      icon: FaEnvelope,
-    },
-  ]
 
   const quickLinks = [
     { name: 'Home', href: '/' },
@@ -49,18 +27,8 @@ const Footer = (props: Props) => {
               Creating beautiful, functional, and user-centered digital experiences 
               through thoughtful design and robust development.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="p-2 rounded-lg border border-border hover:bg-accent transition-colors"
-                  aria-label={link.name}
-                >
-                  <link.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
+            <SocialMediaSection />
+          
           </div>
 
           {/* Quick Links */}
