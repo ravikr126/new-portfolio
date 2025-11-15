@@ -1,7 +1,7 @@
 import React from "react";
 import Marquee from "@/components/ui/Marquee";
 import Hero from "@/components/sections/Hero/Hero";
-import Services from "@/components/sections/Services";
+import WhatIDoSection from "@/components/sections/WhatIDoSection";
 import Projects from "@/components/sections/Projects";
 import ExperienceStrip from "@/components/sections/ExperienceStrip";
 import ExperienceTimeline from "@/components/sections/ExperienceTimeline";
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       {/* Premium Marquee */}
       <Marquee items={MarqueeData} />
-      <Services />
+      <WhatIDoSection />
       <Projects />
       <ExperienceStrip />
       <ExperienceTimeline />

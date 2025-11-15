@@ -191,3 +191,27 @@ export const MarqueeData = [
   "AWS",
   "Data Structures and Algorithms",
 ];
+
+// what to do - Service section
+export const servicesContent = [
+  {
+    title: "Frontend & Product Engineering",
+    description:
+      "Fast, clean, and reliable interfaces built with modern UI patterns, precise engineering, and smooth micro-interactions. Specializing in React, Next.js, and TypeScript.",
+  },
+  {
+    title: "UX Design & Interaction Craft",
+    description:
+      "Design that feels intuitive and reduces cognitive load. Clear flows, simple visuals, and seamless interaction moments that delight users.",
+  },
+  {
+    title: "Performance & System Design",
+    description:
+      "Optimized applications with fast load times, stable pipelines, and robust engineering foundations. Focus on scalability and maintainability.",
+  },
+  {
+    title: "Mentorship & Leadership",
+    description:
+      "Helping developers grow through code reviews, architectural guidance, and best practices. Building strong engineering teams and culture.",
+  },
+];

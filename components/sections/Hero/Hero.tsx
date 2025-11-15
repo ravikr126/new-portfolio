@@ -70,7 +70,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-32 pb-15 px-4">
+    <section ref={sectionRef} className="pt-32 md:pb-10 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
