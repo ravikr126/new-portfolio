@@ -1,42 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { PinContainer } from "../ui/3d-pin";
+import { cards } from "@/data/constantData";
 
-type Card = {
-  title: string;
-  body: string;
-  tags: string[];
-  emoji: string;
-  link: string;
-  linkTitle: string;
-};
-
-const cards: Card[] = [
-  {
-    title: "Project One",
-    body: "A modern marketing experience.",
-    tags: ["Next.js", "TypeScript"],
-    emoji: "🚀",
-    link: "https://github.com/ravikr126/project-one",
-    linkTitle: "github.com/project-one"
-  },
-  {
-    title: "Recruitment Platform",
-    body: "A full-stack job portal.",
-    tags: ["Next.js", "Node"],
-    emoji: "💼",
-    link: "https://github.com/ravikr126/recruitment-platform",
-    linkTitle: "github.com/recruitment"
-  },
-  {
-    title: "Productivity SAAS",
-    body: "Collaborate and get things done.",
-    tags: ["SaaS", "React"],
-    emoji: "✨",
-    link: "https://github.com/ravikr126/productivity-saas",
-    linkTitle: "github.com/productivity"
-  },
-];
 
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);

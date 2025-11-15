@@ -215,3 +215,39 @@ export const servicesContent = [
       "Helping developers grow through code reviews, architectural guidance, and best practices. Building strong engineering teams and culture.",
   },
 ];
+
+type Card = {
+  title: string;
+  body: string;
+  tags: string[];
+  emoji: string;
+  link: string;
+  linkTitle: string;
+};
+
+export const cards: Card[] = [
+  {
+    title: "Project One",
+    body: "A modern marketing experience.",
+    tags: ["Next.js", "TypeScript"],
+    emoji: "🚀",
+    link: "https://github.com/ravikr126/project-one",
+    linkTitle: "github.com/project-one"
+  },
+  {
+    title: "Recruitment Platform",
+    body: "A full-stack job portal.",
+    tags: ["Next.js", "Node"],
+    emoji: "💼",
+    link: "https://github.com/ravikr126/recruitment-platform",
+    linkTitle: "github.com/recruitment"
+  },
+  {
+    title: "Productivity SAAS",
+    body: "Collaborate and get things done.",
+    tags: ["SaaS", "React"],
+    emoji: "✨",
+    link: "https://github.com/ravikr126/productivity-saas",
+    linkTitle: "github.com/productivity"
+  },
+];
