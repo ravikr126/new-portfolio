@@ -3,7 +3,6 @@ import Marquee from "@/components/ui/Marquee";
 import Hero from "@/components/sections/Hero/Hero";
 import WhatIDoSection from "@/components/sections/WhatIDoSection";
 import Projects from "@/components/sections/Projects";
-import ExperienceStrip from "@/components/sections/ExperienceStrip";
 import ExperienceTimeline from "@/components/sections/ExperienceTimeline";
 import BlogStrip from "@/components/sections/BlogStrip";
 import { MarqueeData } from "@/data/constantData";
@@ -16,7 +15,6 @@ export default function Home() {
       <Marquee items={MarqueeData} />
       <WhatIDoSection />
       <Projects />
-      <ExperienceStrip />
       <ExperienceTimeline />
       <BlogStrip />
 

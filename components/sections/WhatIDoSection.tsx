@@ -26,7 +26,7 @@ export default function WhatIDoSection() {
   }));
 
   return (
-    <section ref={sectionRef} className="pt-20 md:pb-10 px-4 bg-muted/30">
+    <section ref={sectionRef} className="pt-20 pb-10 px-4 bg-muted/30">
       <div className="container">
         <div className="text-center md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">What I Do</h2>
