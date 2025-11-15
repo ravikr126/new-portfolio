@@ -16,7 +16,7 @@ export function DraggableCardSection() {
           <img
             src={item.image}
             alt={item.title}
-            className="pointer-events-none relative z-10 h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 lg:h-100 lg:w-80 object-cover rounded-sm sm:rounded md:rounded-md lg:rounded-lg"
+            className="pointer-events-none relative z-10 h-40 w-40 sm:h-55 sm:w-45 md:h-75 md:w-65 lg:h-100 lg:w-70 object-cover rounded-sm sm:rounded md:rounded-md lg:rounded-lg"
           />
           <h3 className="mt-1 sm:mt-2 md:mt-3 lg:mt-4 text-center text-xs sm:text-sm md:text-lg lg:text-2xl font-bold text-neutral-700 dark:text-neutral-300">
             {item.title}

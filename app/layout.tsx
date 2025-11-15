@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import SoftCursor from "@/components/ui/SoftCursor";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import FixedWidthWrapper from "@/components/Common/FixedWidthWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +51,9 @@ export default function RootLayout({
           <SoftCursor />
           <SmoothCursor />
           <MainHeader />
-          {children}
+          <FixedWidthWrapper>
+            {children}
+          </FixedWidthWrapper>
           <Footer />
         </ThemeProvider>
       </body>
