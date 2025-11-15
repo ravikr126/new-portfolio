@@ -99,7 +99,7 @@ function Navbar({ className }: { className?: string }) {
 const MainHeader = (props: Props) => {
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-100 bg-background/30 backdrop-blur-sm ">
+      <header className="fixed top-0 left-0 right-0 z-80 bg-background/30 backdrop-blur-sm ">
         <div className="container mx-auto item-center px-4 md:px-8 py-4 md:py-2 flex items-center justify-between">
           {/* Mobile: Portfolio name and hamburger aligned */}
           <div className="flex items-center justify-between w-full md:hidden">
@@ -116,7 +116,7 @@ const MainHeader = (props: Props) => {
                     <FaBars className="h-6 w-6 text-foreground" />
                   </button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-72 p-0">
+                <SheetContent side="right" className="w-72 p-0 z-100">
                   <VisuallyHidden>
                     <DialogTitle>Navigation Menu</DialogTitle>
                   </VisuallyHidden>
