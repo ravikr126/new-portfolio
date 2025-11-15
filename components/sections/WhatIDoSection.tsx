@@ -27,14 +27,16 @@ export default function WhatIDoSection() {
 
   return (
     <section ref={sectionRef} className="pt-20 pb-10 px-4 bg-muted/30">
-      <div className="container">
-        <div className="text-center md:mb-12">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">What I Do</h2>
           <p className="text-muted-foreground">
             Services focused on clarity, performance, and polish
           </p>
         </div>
-        <StickyScroll content={content} />
+        <div className="flex justify-center">
+          <StickyScroll content={content} />
+        </div>
       </div>
     </section>
   );

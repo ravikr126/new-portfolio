@@ -58,7 +58,7 @@ export default function BlogPage() {
           {filtered.map((p) => (
             <article key={p.slug} className="rounded-xl border border-border bg-card p-6 hover:shadow-lg transition-shadow">
               <h2 className="text-xl font-semibold">{p.title}</h2>
-              <div className="text-sm text-muted-foreground">{new Date(p.date).toLocaleDateString()} • {p.readingTime}</div>
+              <div className="text-sm text-muted-foreground">{new Date(p.date).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })} • {p.readingTime}</div>
               <p className="mt-2 text-muted-foreground">{p.summary}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {p.topics.map((t) => (
