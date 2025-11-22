@@ -249,6 +249,11 @@
                       linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   }
 
+  /* GitHub Contributions Grid - 53 weeks in a year */
+  .grid-cols-53 {
+    grid-template-columns: repeat(53, minmax(0, 1fr));
+  }
+
 }
 
 @layer base {

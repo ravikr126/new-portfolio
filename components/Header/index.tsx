@@ -16,11 +16,11 @@ function Navbar({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("w-full flex justify-center items-center py-4", className)}
+      className={cn("w-full flex justify-center items-center py-4 ", className)}
     >
       <nav
-        className="flex max-w-3xl mx-auto rounded-full bg-background/80 border border-border shadow-lg dark:shadow-white/30 px-2 sm:px-4 py-2 gap-2 sm:gap-4 overflow-x-auto"
-        style={{ backdropFilter: "blur(8px)" }}
+        className="flex max-w-3xl mx-auto rounded-full bg-background/90 dark:bg-gray-900/90 border border-border shadow-lg dark:shadow-white/20 px-2 sm:px-4 py-2 gap-2 overflow-x-auto"
+        style={{ backdropFilter: "blur(12px)" }}
       >
         {navItems.map((item, idx) => {
           const isActive = active === item.name;
