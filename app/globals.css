@@ -39,6 +39,29 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+  @keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+    }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+    }
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+    }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+    }
+  }
 }
 
 :root {
@@ -116,11 +139,10 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     font-feature-settings: "rlig" 1, "calt" 1;
@@ -134,48 +156,48 @@
   body, p, a, li, button, input, textarea {
     font-family: var(--font-ui), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     @apply bg-muted;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     @apply bg-muted-foreground/30 rounded-full;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/50;
   }
-  
+
   /* Selection styles */
   ::selection {
     @apply bg-primary/20 text-primary-foreground;
   }
-  
+
   /* Focus styles */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
   }
-  
+
   /* Smooth transitions for theme changes */
   * {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
-  
+
   /* Hide scrollbar utility class */
   .scrollbar-hide {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
@@ -195,5 +217,45 @@
 
   .timeline-checklist-item {
     @apply flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300;
+  }
+
+  /* Infinite Moving Cards Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  }
+
+  /* Bonheur Royale Font Class */
+  .font-bonheur-royale {
+    font-family: var(--font-bonheur-royale), cursive;
+  }
+
+  /* Pacifico Font Class for Subtitles */
+  .font-pacifico {
+    font-family: var(--font-pacifico), cursive;
+  }
+
+  /* Grid pattern background */
+  .bg-grid-white\/\[0\.02\] {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

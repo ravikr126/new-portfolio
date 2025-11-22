@@ -26,17 +26,26 @@ export default function Marquee({ items, speed = 80 }: Props) {
   }, [speed]);
 
   return (
-    <div className="overflow-hidden border-y py-3 select-none">
-      <div className="flex gap-8 whitespace-nowrap will-change-transform" ref={trackRef}>
-        {[...items, ...items].map((item, i) => (
-          <span key={i} className="text-sm md:text-base text-muted-foreground">
-            {item}
-          </span>
-        ))}
+    <>
+      <div className="relative w-full overflow-hidden select-none bg-[#67FEA6] dark:bg-[#6799FE]">
+        {/* Content */}
+        <div className="relative z-10 py-2 px-8">
+          <div
+            className="flex gap-8 whitespace-nowrap will-change-transform "
+            ref={trackRef}
+          >
+            {[...items, ...items].map((item, i) => (
+              <span
+                key={i}
+                className="text-base font-medium text-white flex items-center gap-3"
+              >
+                <span className="text-white/90 text-lg">✦</span>
+                {item.toUpperCase()}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
-
-

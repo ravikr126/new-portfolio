@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import { StickyScroll } from "../ui/sticky-scroll-reveal";
 import { servicesContent } from "@/data/constantData";
+import { AuroraText } from "../ui/aurora-text";
 
 export default function WhatIDoSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,10 +29,13 @@ export default function WhatIDoSection() {
   return (
     <section ref={sectionRef} className="pt-20 pb-10 px-4 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">What I Do</h2>
-          <p className="text-muted-foreground">
-            Services focused on clarity, performance, and polish
+        <div className="text-center space-y-2 md:space-y-3 mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-sm sm:text-md md:text-xl font-bold text-foreground">
+            What I Do
+          </h2>
+          <p className="font-pacifico text-muted-foreground text-3xl md:text-4xl">
+            Services focused on&nbsp;
+            <AuroraText> Clarity, Performance, and Polish</AuroraText>
           </p>
         </div>
         <div className="flex justify-center">
@@ -41,4 +45,3 @@ export default function WhatIDoSection() {
     </section>
   );
 }
-

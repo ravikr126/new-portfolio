@@ -5,6 +5,7 @@ import { TimeLineData } from "@/data/experience";
 import Magnetic from "@/components/ui/Magnetic";
 import { CoolMode } from "@/components/ui/cool-mode";
 import { ButtonIcons } from "@/data/constantData";
+import { AuroraText } from "../ui/aurora-text";
 
 export default function ExperienceTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,6 +36,15 @@ export default function ExperienceTimeline() {
 
   return (
     <section ref={sectionRef} className="py-20 px-4 bg-muted/30">
+      <div className="text-center space-y-2 md:space-y-3 mb-8 md:mb-12 lg:mb-16">
+        <h2 className="text-sm sm:text-md md:text-xl font-bold text-foreground">
+          The Experience
+        </h2>
+        <p className="font-pacifico text-muted-foreground text-3xl md:text-4xl">
+          Experience That Brings&nbsp;
+          <AuroraText>Ideas to Life</AuroraText>
+        </p>
+      </div>
       <div className="container mx-auto max-w-5xl">
         <TimelineMap data={TimeLineData} />
       </div>
@@ -61,7 +71,13 @@ export default function ExperienceTimeline() {
 interface TimelineMapProps {
   data: Array<{
     title: string;
-    content: React.ReactNode;
+    company?: string;
+    location?: string;
+    workType?: string;
+    role?: string;
+    technologies?: string[];
+    achievements: string[];
+    content?: React.ReactNode;
   }>;
 }
 

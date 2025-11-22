@@ -85,10 +85,12 @@ export const Taglines = [
   "System Design Enthusiast",
 ];
 
-export const SubTitle =
+  export const SubTitle =
   " I create refined, performant, and user-centered digital experiences.Blending thoughtful design with robust engineering to ship premium products.";
-export const ButtonIcons = ["🚀", "⚡", "🎯", "💻", "⭐"];
-export const ConnectionLink = {
+
+  export const ButtonIcons = ["🚀", "⚡", "🎯", "💻", "⭐"];
+
+  export const ConnectionLink = {
   Resumelink:
     "https://drive.google.com/file/d/12wvL3cr4QRBrkSavrTAsz2k5Y7hpXUiN/view?usp=share_link",
   Github: "https://github.com/ravikr126",
@@ -104,8 +106,10 @@ export const ConnectionLink = {
   Codeforces: "https://codeforces.com/profile/ravikr",
   Youtube: "https://www.youtube.com/@learn1percenteveryday",
 };
-export const DraggableTitle = "Thanks for be here!!";
-export const DraggableItems = [
+
+ export const DraggableTitle = "Thanks for be here!!";
+
+ export const DraggableItems = [
   {
     title: "Tyler Durden",
     image:
@@ -226,28 +230,36 @@ type Card = {
 };
 
 export const cards: Card[] = [
+  // {
+  //   title: "Learn 1% everyday",
+  //   body: "One stop platform which helps students for learning.",
+  //   tags: ["Next.js", "TypeScript", 'TailwindCSS','Node.js','Express','MongoDB'],
+  //   emoji: "🚀",
+  //   link: "https://github.com/ravikr126/learn1percenteveryday",
+  //   linkTitle: "Work in Progress 🧑‍💻"
+  // },
   {
-    title: "Project One",
-    body: "A modern marketing experience.",
-    tags: ["Next.js", "TypeScript"],
-    emoji: "🚀",
-    link: "https://github.com/ravikr126/project-one",
-    linkTitle: "github.com/project-one"
-  },
-  {
-    title: "Recruitment Platform",
-    body: "A full-stack job portal.",
-    tags: ["Next.js", "Node"],
+    title: "Doodle Hub",
+    body: "A full-stack application to create and share doodles online.",
+    tags: ["Next.js", "TypeScript", "TailwindCSS", 'LiveBlocks'],
     emoji: "💼",
-    link: "https://github.com/ravikr126/recruitment-platform",
-    linkTitle: "github.com/recruitment"
+    link: "https://github.com/ravikr126/doodle_hub--major-project",
+    linkTitle: "Doodle Hub"
   },
   {
-    title: "Productivity SAAS",
-    body: "Collaborate and get things done.",
-    tags: ["SaaS", "React"],
+    title: "Blog Platform",
+    body: "A SaaS blog platform to generate content ideas and drafts",
+    tags: ["SaaS", "Nodejs", "React"],
     emoji: "✨",
-    link: "https://github.com/ravikr126/productivity-saas",
-    linkTitle: "github.com/productivity"
+    link: "https://github.com/ravikr126/blogify--major-project",
+    linkTitle: "Blog Platform"
+  },
+  {
+    title: "Resume Builder",
+    body: "A SaaS platform to create and manage resumes online.",
+    tags: ["SaaS","React"],
+    emoji: "🚀",
+    link: "https://github.com/ravikr126/Resume-Builder-React--major-project",
+    linkTitle: "Resume Builder"
   },
 ];

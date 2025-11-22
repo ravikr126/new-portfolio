@@ -29,7 +29,7 @@ const FixedWidthWrapper: React.FC<FixedWidthWrapperProps> = ({
   };
 
   return (
-    <div className={`flex justify-center w-full px-5 md:px-10 ${getPaddingClass()} ${className}`}>
+    <div className={`flex justify-center w-full  ${getPaddingClass()} ${className}`}>
       <div 
         className="w-full"
         style={getMaxWidthStyle()}

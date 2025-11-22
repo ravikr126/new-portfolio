@@ -3,10 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaDownload } from "react-icons/fa";
 import Magnetic from "@/components/ui/Magnetic";
 import { TypeAnimation } from "react-type-animation";
-import { ButtonIcons, ConnectionLink, SubTitle, Taglines } from "@/data/constantData";
+import {
+  ButtonIcons,
+  ConnectionLink,
+  SubTitle,
+  Taglines,
+} from "@/data/constantData";
 import { DraggableCardSection } from "./DraggableCard";
 import SocialMediaSection from "@/components/Common/SocialMediaSection";
 import { CoolMode } from "@/components/ui/cool-mode";
+import MagneticLink from "@/components/ui/MagneticLink";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -105,44 +111,25 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Magnetic className="inline-block">
-                <CoolMode
-                  options={{
-                    particle: [
-                      "https://pbs.twimg.com/profile_images/1782811051504885763/YR5-kWOI_400x400.jpg",
-                      "🚀",
-                      "⚡",
-                      "🎯",
-                      "💻",
-                      "⭐"
-                    ],
-                  }}
-                >
-                  <a
-                    href={ConnectionLink.Resumelink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    <FaDownload className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </a>
-                </CoolMode>
-              </Magnetic>
-              <Magnetic className="inline-block">
-                 <CoolMode
-                  options={{
-                    particle: ButtonIcons
-                  }}
-                >
-                  <a
-                    href="#projects"
-                    className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors"
-                  >
-                    View My Creativity
-                  </a>
-                </CoolMode>
-              </Magnetic>
+              <MagneticLink
+                href={ConnectionLink.Resumelink}
+                target="_blank"
+                rel="noopener noreferrer"
+                magneticClass="inline-block"
+                linkClass="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                particles={ButtonIcons}
+              >
+                <FaDownload className="mr-2 h-4 w-4" />
+                Download Resume
+              </MagneticLink>
+              <MagneticLink
+                href="#projects"
+                magneticClass="inline-block"
+                linkClass="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors"
+                particles={ButtonIcons}
+              >
+                View My Creativity
+              </MagneticLink>
             </div>
             <SocialMediaSection />
           </div>
