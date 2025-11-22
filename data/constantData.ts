@@ -28,9 +28,9 @@ export const navItems = [
     }),
   },
   {
-    name: "Experience",
-    link: "/experience",
-    icon: React.createElement(FaBriefcase, {
+    name: "Blog",
+    link: "/blog",
+    icon: React.createElement(ImBlog, {
       className: "h-4 w-4 text-neutral-500 dark:text-white",
     }),
   },
@@ -41,33 +41,10 @@ export const navItems = [
       className: "h-4 w-4 text-neutral-500 dark:text-white",
     }),
   },
-];
-export const moreItems = [
-  {
-    name: "Blog",
-    link: "/blog",
-    icon: React.createElement(ImBlog, {
-      className: "h-4 w-4 text-neutral-500 dark:text-white",
-    }),
-  },
-  {
-    name: "Work",
-    link: "/work",
-    icon: React.createElement(MdWork, {
-      className: "h-4 w-4 text-neutral-500 dark:text-white",
-    }),
-  },
-  {
-    name: "Contact",
-    link: "/contact",
-    icon: React.createElement(MdContactMail, {
-      className: "h-4 w-4 text-neutral-500 dark:text-white",
-    }),
-  },
-  {
+    {
     name: "Book a Call",
-    link: "https://topmate.io/theravikr/",
-    icon: React.createElement(FaCalendarCheck, {
+    link: "https://topmate.io/theravikr",
+    icon: React.createElement(MdContactMail, {
       className: "h-4 w-4 text-neutral-500 dark:text-white",
     }),
   },
@@ -85,12 +62,12 @@ export const Taglines = [
   "System Design Enthusiast",
 ];
 
-  export const SubTitle =
+export const SubTitle =
   " I create refined, performant, and user-centered digital experiences.Blending thoughtful design with robust engineering to ship premium products.";
 
-  export const ButtonIcons = ["🚀", "⚡", "🎯", "💻", "⭐"];
+export const ButtonIcons = ["🚀", "⚡", "🎯", "💻", "⭐"];
 
-  export const ConnectionLink = {
+export const ConnectionLink = {
   Resumelink:
     "https://drive.google.com/file/d/12wvL3cr4QRBrkSavrTAsz2k5Y7hpXUiN/view?usp=share_link",
   Github: "https://github.com/ravikr126",
@@ -107,9 +84,9 @@ export const Taglines = [
   Youtube: "https://www.youtube.com/@learn1percenteveryday",
 };
 
- export const DraggableTitle = "Thanks for be here!!";
+export const DraggableTitle = "Thanks for be here!!";
 
- export const DraggableItems = [
+export const DraggableItems = [
   {
     title: "Tyler Durden",
     image:
@@ -241,10 +218,10 @@ export const cards: Card[] = [
   {
     title: "Doodle Hub",
     body: "A full-stack application to create and share doodles online.",
-    tags: ["Next.js", "TypeScript", "TailwindCSS", 'LiveBlocks'],
+    tags: ["Next.js", "TypeScript", "TailwindCSS", "LiveBlocks"],
     emoji: "💼",
     link: "https://github.com/ravikr126/doodle_hub--major-project",
-    linkTitle: "Doodle Hub"
+    linkTitle: "Doodle Hub",
   },
   {
     title: "Blog Platform",
@@ -252,14 +229,14 @@ export const cards: Card[] = [
     tags: ["SaaS", "Nodejs", "React"],
     emoji: "✨",
     link: "https://github.com/ravikr126/blogify--major-project",
-    linkTitle: "Blog Platform"
+    linkTitle: "Blog Platform",
   },
   {
     title: "Resume Builder",
     body: "A SaaS platform to create and manage resumes online.",
-    tags: ["SaaS","React"],
+    tags: ["SaaS", "React"],
     emoji: "🚀",
     link: "https://github.com/ravikr126/Resume-Builder-React--major-project",
-    linkTitle: "Resume Builder"
+    linkTitle: "Resume Builder",
   },
 ];

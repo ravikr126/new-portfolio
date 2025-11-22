@@ -11,7 +11,6 @@ import {
 } from "@/data/constantData";
 import { DraggableCardSection } from "./DraggableCard";
 import SocialMediaSection from "@/components/Common/SocialMediaSection";
-import { CoolMode } from "@/components/ui/cool-mode";
 import MagneticLink from "@/components/ui/MagneticLink";
 
 export default function Hero() {
