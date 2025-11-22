@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { Vortex } from "../ui/vortex";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 import { FaLinkedin } from "react-icons/fa";
@@ -82,12 +83,12 @@ const TestimonialsAndRecommandation = (props: Props) => {
           </div>
 
           <div className="flex justify-center mt-6 md:mt-8 lg:mt-12">
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm sm:text-base"
             >
               Let's Work Together
-            </a>
+            </Link>
           </div>
         </div>
       </Vortex>

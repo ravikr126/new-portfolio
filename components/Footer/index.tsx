@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import {
   FaGithub,
   FaLinkedin,
@@ -45,12 +46,12 @@ const Footer = (props: Props) => {
               <ul className="space-y-2">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -107,18 +108,18 @@ const Footer = (props: Props) => {
                 © {currentYear} Your Name. All rights reserved.
               </p>
               <div className="flex space-x-6 text-sm">
-                <a
+                <Link
                   href="/privacy"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Privacy Policy
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/terms"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   Terms of Service
-                </a>
+                </Link>
               </div>
             </div>
           </div>

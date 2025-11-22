@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { Timeline } from "@/components/ui/timeline";
 import { TimeLineData } from "@/data/experience";
 import Magnetic from "@/components/ui/Magnetic";
@@ -55,12 +56,12 @@ export default function ExperienceTimeline() {
               particle: ButtonIcons,
             }}
           >
-            <a
+            <Link
               href="/experience"
               className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-lg font-medium hover:bg-accent transition-colors"
             >
               Explore Full Experience 🧐
-            </a>
+            </Link>
           </CoolMode>
         </Magnetic>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import Magnetic from "./Magnetic";
 import { CoolMode } from "./cool-mode";
 
@@ -29,14 +30,14 @@ export default function MagneticLink({
           particle: particles,
         }}
       >
-        <a
+        <Link
           href={href}
           target={target}
           rel={rel}
           className={linkClass}
         >
           {children}
-        </a>
+        </Link>
       </CoolMode>
     </Magnetic>
   );

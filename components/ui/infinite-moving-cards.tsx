@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 
 export const InfiniteMovingCards = ({
@@ -110,7 +111,7 @@ export const InfiniteMovingCards = ({
                   </span>
                 </span>
                 {item.linkedin && (
-                  <a
+                  <Link
                     href={item.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -118,7 +119,7 @@ export const InfiniteMovingCards = ({
                     aria-label={`Visit ${item.name}'s LinkedIn profile`}
                   >
                     <FaLinkedin className="h-4 w-4 text-primary group-hover:text-primary/80 transition-colors" />
-                  </a>
+                  </Link>
                 )}
               </div>
             </blockquote>

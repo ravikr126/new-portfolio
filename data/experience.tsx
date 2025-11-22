@@ -5,7 +5,7 @@ export const TimeLineData = [
     location: "Bangalore, India",
     workType: "Onsite work",
     role: "Software Developer Engineer 1",
-    technologies: ["React", "TypeScript", "Node.js", "Firebase", "AWS", "MongoDB", "Tailwind CSS", "Redux"],
+    technologies: ["React", "TypeScript", "Firebase", "AWS", "Tailwind CSS", "Redux", "Git"],
     achievements: [
       "Building **complaint Management portal** as a **SAAS module** which easily attached with any other banking project with **minimal changes**.",
       "Key contributor to the **Direct Selling Agent (DSA)** team, building robust digital solutions for India's biggest Bank (also called 🐘of Bank Nifty🤑) and partners.",

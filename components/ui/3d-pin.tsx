@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -76,8 +77,8 @@ export const PinPerspective = ({
     <motion.div className="pointer-events-none w-60 h-48 sm:w-64 sm:h-52 md:w-72 md:h-56 lg:w-80 lg:h-64 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
         <div className="absolute top-0 inset-x-0  flex justify-center">
-          <a
-            href={href}
+          <Link
+            href={href || "#"}
             target={"_blank"}
             className="relative flex space-x-2 items-center z-10 rounded-full bg-card py-0.5 px-4 ring-1 ring-border"
           >
@@ -86,7 +87,7 @@ export const PinPerspective = ({
             </span>
 
             <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-primary/0 via-primary/90 to-primary/0 transition-opacity duration-500 group-hover/btn:opacity-40"></span>
-          </a>
+          </Link>
         </div>
 
         <div

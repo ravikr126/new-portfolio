@@ -5,7 +5,7 @@ import {
   motion,
 } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
-
+import Image from "next/image";
 interface TimelineEntry {
   title: string;
   company?: string;
@@ -54,8 +54,14 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           const TimelineCard = React.memo(() => (
             <div className="flex justify-start pt-6 sm:pt-8 md:pt-10 gap-4 sm:gap-6 md:gap-10">
               <div className="sticky flex flex-col md:flex-row z-40 items-start top-20 sm:top-32 md:top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-                <div className="h-8 w-8 sm:h-10 sm:w-10 absolute left-2 sm:left-3 md:left-3 rounded-full border border-border flex items-center justify-center bg-background">
-                  <div className="h-3 w-3 sm:h-4 sm:w-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 border-2 border-background shadow-lg" />
+                <div className="h-8 w-8 sm:h-10 sm:w-10 absolute left-2 sm:left-3 md:left-3 rounded-full border-2 border-purple-500 overflow-hidden bg-background shadow-lg">
+                  <Image 
+                    src="/my_img.jpg"
+                    alt="Profile" 
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
                 <div className="hidden md:block md:pl-20 w-full">
                   <h3 className="text-xs sm:text-sm md:text-sm lg:text-base text-muted-foreground font-medium mb-2">
@@ -173,7 +179,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           style={{
             height: height + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[4px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-border to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
+          className="absolute md:left-8 left-6 top-0 overflow-hidden w-[4px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-border to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
           <motion.div
             style={{

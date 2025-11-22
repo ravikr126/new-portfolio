@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
 import { PinContainer } from "../ui/3d-pin";
 import { ButtonIcons, cards } from "@/data/constantData";
 import { AuroraText } from "../ui/aurora-text";
@@ -94,12 +95,12 @@ export default function Projects() {
                       particle: ButtonIcons,
                     }}
                   >
-                    <a
+                    <Link
                       href="/experience"
                       className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium hover:bg-accent transition-colors"
                     >
                     See More Projects.....
-                    </a>
+                    </Link>
                   </CoolMode>
                 </Magnetic>
               </div>
