@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useAnimation, useInView, Variants } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AuroraText } from "../ui/aurora-text";
 import FixedWidthWrapper from "../Common/FixedWidthWrapper";
 import { skillsData } from "@/data/SkillsData";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const categoryColors = {
   frontend: "from-blue-500 to-purple-600",
@@ -15,58 +19,13 @@ const categoryColors = {
 };
 
 const Skills = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [isConverged, setIsConverged] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [isResizing, setIsResizing] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
-  const controls = useAnimation();
-  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    const handleResize = () => {
-      setIsResizing(true);
-
-      // Clear previous timeout
-      if (resizeTimeoutRef.current) {
-        clearTimeout(resizeTimeoutRef.current);
-      }
-
-      // Debounce resize updates
-      resizeTimeoutRef.current = setTimeout(() => {
-        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-        setIsResizing(false);
-      }, 150);
-    };
-
-    // Set initial size
-    handleResize();
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-      if (resizeTimeoutRef.current) {
-        clearTimeout(resizeTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView && !isResizing) {
-      setIsConverged(true);
-      controls.start("visible");
-    } else if (!isInView) {
-      setIsConverged(false);
-      controls.start("hidden");
-    }
-  }, [isInView, controls, isResizing]);
+  const skillsContainerRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   const getInitialPosition = (index: number) => {
     const angle = (index / skillsData.length) * Math.PI * 2;
@@ -78,14 +37,13 @@ const Skills = () => {
   };
 
   const getConvergedPosition = (index: number) => {
-    const width = typeof window !== "undefined" ? window.innerWidth : 1024;
+    const width = windowSize.width || (typeof window !== "undefined" ? window.innerWidth : 1024);
     const itemsPerRow = width < 640 ? 4 : width < 1024 ? 6 : 7;
     const row = Math.floor(index / itemsPerRow);
     const col = index % itemsPerRow;
-    const spacingX = width < 640 ? 80 : width < 1024 ? 40 : 90;
-    const spacingY = width < 640 ? 110 : width < 1024 ? 50 : 160;
+    const spacingX = width < 640 ? 80 : width < 1024 ? 90 : 100;
+    const spacingY = width < 640 ? 110 : width < 1024 ? 120 : 160;
 
-    // Adjust vertical centering to prevent bottom cutoff
     const totalRows = Math.ceil(skillsData.length / itemsPerRow);
     const verticalOffset = (totalRows - 1) * spacingY * 0.5;
 
@@ -95,53 +53,181 @@ const Skills = () => {
     };
   };
 
-  const skillVariants: Variants = {
-    hidden: (index: number) => {
-      const initial = getInitialPosition(index);
-      return {
-        x: initial.x,
-        y: initial.y,
-        scale: 0.3,
-        opacity: 0.6,
-        rotate: Math.random() * 360,
-      };
-    },
-    visible: (index: number) => {
-      const converged = getConvergedPosition(index);
-      return {
-        x: converged.x,
-        y: converged.y,
+  const animateToConverged = () => {
+    if (!skillsRef.current || !tlRef.current) return;
+
+    setIsConverged(true);
+    
+    // Hide scroll indicator
+    if (scrollIndicatorRef.current) {
+      gsap.to(scrollIndicatorRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+
+    // Animate skills to grid positions
+    skillsRef.current.forEach((skillEl, index) => {
+      if (!skillEl) return;
+      
+      const convergedPos = getConvergedPosition(index);
+      const nameEl = skillEl.querySelector('.skill-name');
+      
+      gsap.to(skillEl, {
+        x: convergedPos.x,
+        y: convergedPos.y,
         scale: 1,
-        opacity: 1,
-        rotate: 0,
-        transition: {
-          duration: isResizing ? 0.3 : 1.2,
-          delay: isResizing ? 0 : index * 0.05,
-          type: "spring" as const,
-          stiffness: isResizing ? 200 : 100,
-          damping: isResizing ? 25 : 15,
-        },
-      };
-    },
+        rotation: 0,
+        duration: 1.2,
+        delay: index * 0.05,
+        ease: "back.out(1.2)",
+      });
+
+      // Fade in skill names
+      if (nameEl) {
+        gsap.to(nameEl, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.8 + index * 0.02,
+          ease: "power2.out"
+        });
+      }
+    });
   };
 
-  const containerVariants: Variants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: isResizing ? 0.2 : 0.5,
-        staggerChildren: isResizing ? 0.02 : 0.1,
-      },
-    },
+  const animateToScattered = () => {
+    if (!skillsRef.current || !tlRef.current) return;
+
+    setIsConverged(false);
+    
+    // Show scroll indicator
+    if (scrollIndicatorRef.current) {
+      gsap.to(scrollIndicatorRef.current, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+
+    // Animate skills to scattered positions
+    skillsRef.current.forEach((skillEl, index) => {
+      if (!skillEl) return;
+      
+      const initialPos = getInitialPosition(index);
+      const nameEl = skillEl.querySelector('.skill-name');
+      
+      // Hide skill names first
+      if (nameEl) {
+        gsap.to(nameEl, {
+          opacity: 0,
+          y: 10,
+          duration: 0.3,
+          ease: "power2.in"
+        });
+      }
+
+      gsap.to(skillEl, {
+        x: initialPos.x,
+        y: initialPos.y,
+        scale: 0.7,
+        rotation: Math.random() * 360 - 180,
+        duration: 0.8,
+        delay: index * 0.02,
+        ease: "power2.inOut",
+      });
+    });
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current || !skillsContainerRef.current) return;
+
+    // Initialize GSAP timeline
+    tlRef.current = gsap.timeline({ paused: true });
+
+    // Set initial positions for skills
+    skillsRef.current.forEach((skillEl, index) => {
+      if (!skillEl) return;
+      
+      const initialPos = getInitialPosition(index);
+      const nameEl = skillEl.querySelector('.skill-name');
+      
+      gsap.set(skillEl, {
+        x: initialPos.x,
+        y: initialPos.y,
+        scale: 0.7,
+        rotation: Math.random() * 360 - 180,
+      });
+
+      if (nameEl) {
+        gsap.set(nameEl, {
+          opacity: 0,
+          y: 10
+        });
+      }
+    });
+
+    // Animate scroll indicator
+    if (scrollIndicatorRef.current) {
+      const mouseElement = scrollIndicatorRef.current.querySelector('.scroll-mouse');
+      const wheelElement = scrollIndicatorRef.current.querySelector('.scroll-wheel');
+      
+      if (mouseElement && wheelElement) {
+        gsap.to(mouseElement, {
+          y: 10,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true
+        });
+        
+        gsap.to(wheelElement, {
+          y: 15,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true
+        });
+      }
+    }
+
+    // Set up ScrollTrigger
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top center",
+      end: "bottom center",
+      onEnter: animateToConverged,
+      onLeave: animateToScattered,
+      onEnterBack: animateToConverged,
+      onLeaveBack: animateToScattered,
+    });
+
+    return () => {
+      scrollTrigger.kill();
+      if (tlRef.current) {
+        tlRef.current.kill();
+      }
+    };
+  }, [windowSize]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen py-10 overflow-hidden"
+      className="relative py-10 overflow-hidden"
     >
       <div className="text-center space-y-2 md:space-y-3 mb-8 md:mb-12 lg:mb-16">
         <h2 className="text-sm sm:text-md md:text-xl font-bold text-foreground">
@@ -152,6 +238,7 @@ const Skills = () => {
           <AuroraText>Sauce</AuroraText>
         </p>
       </div>
+
       {/* Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(120,119,198,0.1),transparent_70%)]" />
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
@@ -159,25 +246,33 @@ const Skills = () => {
       <FixedWidthWrapper className="relative z-10">
         {/* Skills Grid Container */}
         <div className="relative flex justify-center items-center min-h-[750px] md:min-h-[600px]">
-          <motion.div
-            variants={containerVariants}
-            animate={controls}
+          <div
+            ref={skillsContainerRef}
             className="relative w-full max-w-5xl flex justify-center items-center"
           >
             {skillsData.map((skill, index) => {
               const IconComponent = skill.icon;
               return (
-                <motion.div
+                <div
                   key={skill.name}
-                  custom={index}
-                  variants={skillVariants}
-                  animate={controls}
-                  whileHover={{
-                    scale: 1.2,
-                    zIndex: 10,
-                    transition: { duration: 0.2 },
-                  }}
+                  ref={(el) => { skillsRef.current[index] = el; }}
                   className="absolute flex flex-col items-center justify-center group cursor-pointer"
+                  onMouseEnter={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.2,
+                      zIndex: 10,
+                      duration: 0.3,
+                      ease: "back.out(1.7)"
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.currentTarget, {
+                      scale: isConverged ? 1 : 0.7,
+                      zIndex: 1,
+                      duration: 0.3,
+                      ease: "power2.out"
+                    });
+                  }}
                 >
                   {/* Skill Icon Card */}
                   <div className="relative">
@@ -193,7 +288,7 @@ const Skills = () => {
                     {/* Main Card */}
                     <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 group-hover:bg-white/15 transition-all duration-300 shadow-lg">
                       <div
-                        className="w-6 h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 transition-all duration-300 group-hover:scale-110 flex items-center justify-center  rounded-lg"
+                        className="w-6 h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 transition-all duration-300 group-hover:scale-110 flex items-center justify-center rounded-lg"
                         style={{
                           color: skill.color,
                           backgroundColor: `${skill.color}15`,
@@ -206,15 +301,7 @@ const Skills = () => {
                   </div>
 
                   {/* Skill Name */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{
-                      opacity: isConverged ? 1 : 0,
-                      y: isConverged ? 0 : 10,
-                    }}
-                    transition={{ delay: 0.5 + index * 0.02 }}
-                    className="mt-3 text-center"
-                  >
+                  <div className="skill-name mt-3 text-center">
                     <span className="text-black dark:text-white text-xs md:text-sm font-medium block">
                       {skill.name}
                     </span>
@@ -225,36 +312,25 @@ const Skills = () => {
                     >
                       {skill.category}
                     </span>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
+
         {/* Scroll Indicator */}
-        {!isConverged && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="flex flex-col items-center text-white/60">
-              <span className="text-sm mb-2">Scroll to see the magic</span>
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ repeat: Infinity, duration: 2 }}
-                className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-              >
-                <motion.div
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="w-1 h-3 bg-white/60 rounded-full mt-2"
-                />
-              </motion.div>
+        <div
+          ref={scrollIndicatorRef}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="flex flex-col items-center text-white/60">
+            <span className="text-sm mb-2">Scroll to see the magic</span>
+            <div className="scroll-mouse w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="scroll-wheel w-1 h-3 bg-white/60 rounded-full mt-2" />
             </div>
-          </motion.div>
-        )}
+          </div>
+        </div>
       </FixedWidthWrapper>
     </section>
   );
