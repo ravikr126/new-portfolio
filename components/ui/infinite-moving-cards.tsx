@@ -21,27 +21,40 @@ const QuoteText = ({ quote, name }: { quote: string; name: string }) => {
   useEffect(() => {
     const checkOverflow = () => {
       if (textRef.current) {
-        const lineHeight = parseInt(window.getComputedStyle(textRef.current).lineHeight);
-        const maxHeight = lineHeight * 4; // 4 lines
-        const actualHeight = textRef.current.scrollHeight;
-        setIsOverflowing(actualHeight > maxHeight);
+        // Reset line-clamp temporarily to measure full height
+        textRef.current.style.webkitLineClamp = 'unset';
+        const fullHeight = textRef.current.scrollHeight;
+        
+        // Apply line-clamp to measure clamped height
+        textRef.current.style.webkitLineClamp = '4';
+        const clampedHeight = textRef.current.clientHeight;
+        
+        setIsOverflowing(fullHeight > clampedHeight + 5); // 5px buffer
       }
     };
     
-    // Check on mount and window resize
-    checkOverflow();
+    // Use timeout to ensure DOM is ready
+    const timer = setTimeout(checkOverflow, 100);
+    
+    // Check on resize
     window.addEventListener('resize', checkOverflow);
-    return () => window.removeEventListener('resize', checkOverflow);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkOverflow);
+    };
   }, [quote]);
 
   return (
     <>
       <span 
         ref={textRef}
-        className={cn(
-          "relative z-20 text-xs sm:text-sm leading-[1.6] font-normal text-foreground block",
-          isOverflowing && "line-clamp-4"
-        )}
+        className="relative z-20 text-xs sm:text-sm leading-[1.6] font-normal text-foreground block line-clamp-4"
+        style={{
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical',
+          WebkitLineClamp: 4,
+          overflow: 'hidden'
+        }}
       >
         {quote}
       </span>

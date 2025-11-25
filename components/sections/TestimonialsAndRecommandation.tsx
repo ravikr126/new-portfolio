@@ -9,36 +9,40 @@ import { Linkedin, Quote } from "lucide-react";
 type Props = {};
 
 const TestimonialsAndRecommandation = (props: Props) => {
-  const recommendations = [
-    {
+
+
+  const testimonials = [
+     {
       quote:
         "I had the pleasure of working with Ravi for a year, during which he was part of my team as a Frontend Developer. Ravi consistently demonstrated strong technical skills in JavaScript and React, and brought a sharp eye for detail to every component he worked on. What really stood out about Ravi was not just his ability to write clean, maintainable code, but also his proactive involvement in architectural discussions and design decisions. He showed a deep understanding of frontend best practices, performance optimization, and modern UI/UX patterns. His contributions often went beyond implementation—he regularly offered thoughtful suggestions that improved the overall quality and scalability of our applications. Ravi is a reliable team player, always open to feedback and collaboration, and quick to pick up new technologies. Any team would benefit from his technical expertise and problem-solving mindset. I look forward to seeing all that he accomplishes in the future.",
       name: "Nitin Dixit",
-      Linkedin: "https://www.linkedin.com/in/dixitnitin26/",
+      title: "Frontend Team Lead",
+      linkedin: "https://www.linkedin.com/in/dixitnitin26/",
     },
     {
       quote:
         "He is very sincere and hardworking for the work that is assigned to the position.. All the best for ur bright future ",
       name: "Hemant Verma",
+      title: "Colleague",
       linkedin: "https://www.linkedin.com/in/hemantverma282/",
     },
-  ];
-
-  const testimonials = [
     {
       quote:
         "Sir explained everything very clearly and genuinely according to the present market trends. He gave me a clear direction on how to study effectively, when and how to start applying for jobs, and the best way to learn and grow in this field. Most importantly, he helped me understand the right approach to reach my goals — not just what to do, but how to do it in the right order. The session gave me great clarity and awareness about my current situation, my next steps, and how to move forward",
       name: "Vineela Velpuri",
+      title: "Mentee",
     },
     {
       quote:
         "Ravi Sir is always ready to answer any doubts. He will pick ur call, give us guidanc e whenever we need it. He is a pro in web development and dsa🫡✨. He understand the weak points of students and is so flexible to set the schedule according to student's needs. Sir gives a proper roadmap for skills enhancement and conducts tests too. Overall, Sir is very approachable and good mentor. If one sincerely follows his words, he/she is sure shot ready to crack a big MNC with a high package.",
       name: "Tanushree B",
+      title: "Student",
     },
     {
       quote:
         "The session was quite intrusting my all doubt are clear now and I am satisfied with all the questions. I am interested to reconnect revi once and to be clear towards my path. This session is very helpful for the career path.",
       name: "Om Gupta",
+      title: "Mentee",
     },
     {
       quote:

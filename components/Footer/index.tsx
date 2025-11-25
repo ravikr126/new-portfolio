@@ -1,16 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaPhone,
 } from "react-icons/fa";
 import { Title } from "@/data/constantData";
 import SocialMediaSection from "../Common/SocialMediaSection";
-import FixedWidthWrapper from "../Common/FixedWidthWrapper";
 type Props = {};
 
 const Footer = (props: Props) => {
@@ -21,12 +16,12 @@ const Footer = (props: Props) => {
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
     { name: "Contact", href: "/contact" },
+    { name: "Blogs", href: "/blog" },
   ];
 
   return (
-    <footer className="bg-muted/30 border-t border-border">
-      <FixedWidthWrapper>
-        <div className="container mx-auto px-4 py-16">
+    <footer className="bg-muted/30 px-5 lg:mx-20 rounded-t-[16px] ">
+        <div className="container mx-auto px-4 py-12">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Brand Section */}
             <div className="space-y-4">
@@ -64,19 +59,13 @@ const Footer = (props: Props) => {
                 <div className="flex items-center space-x-3">
                   <FaEnvelope className="h-4 w-4 text-primary" />
                   <span className="text-muted-foreground">
-                    your.email@example.com
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <FaPhone className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">
-                    +1 (555) 123-4567
+                    ravi14577@gmail.com
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <FaMapMarkerAlt className="h-4 w-4 text-primary" />
                   <span className="text-muted-foreground">
-                    Your City, Country
+                    Bangalore, India
                   </span>
                 </div>
               </div>
@@ -105,7 +94,7 @@ const Footer = (props: Props) => {
           <div className="mt-12 pt-8 border-t border-border">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-muted-foreground text-sm">
-                © {currentYear} Your Name. All rights reserved.
+                © {currentYear} Ravi Kumar. All rights reserved.
               </p>
               <div className="flex space-x-6 text-sm">
                 <Link
@@ -124,7 +113,6 @@ const Footer = (props: Props) => {
             </div>
           </div>
         </div>
-      </FixedWidthWrapper>
     </footer>
   );
 };
