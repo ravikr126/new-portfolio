@@ -254,6 +254,14 @@
     grid-template-columns: repeat(53, minmax(0, 1fr));
   }
 
+  /* Line clamp utilities */
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
 }
 
 @layer base {

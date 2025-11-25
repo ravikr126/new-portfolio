@@ -1,9 +1,72 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./dialog";
+
+// Component to handle quote truncation and expansion
+const QuoteText = ({ quote, name }: { quote: string; name: string }) => {
+  const [showMore, setShowMore] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const textRef = useRef<HTMLSpanElement>(null);
+  
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const lineHeight = parseInt(window.getComputedStyle(textRef.current).lineHeight);
+        const maxHeight = lineHeight * 4; // 4 lines
+        const actualHeight = textRef.current.scrollHeight;
+        setIsOverflowing(actualHeight > maxHeight);
+      }
+    };
+    
+    // Check on mount and window resize
+    checkOverflow();
+    window.addEventListener('resize', checkOverflow);
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, [quote]);
+
+  return (
+    <>
+      <span 
+        ref={textRef}
+        className={cn(
+          "relative z-20 text-xs sm:text-sm leading-[1.6] font-normal text-foreground block",
+          isOverflowing && "line-clamp-4"
+        )}
+      >
+        {quote}
+      </span>
+      {isOverflowing && (
+        <Dialog open={showMore} onOpenChange={setShowMore}>
+          <DialogTrigger asChild>
+            <button className="text-primary hover:text-primary/80 text-xs mt-2 font-medium transition-colors">
+              Show more
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-md sm:max-w-lg max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-left">{name}</DialogTitle>
+            </DialogHeader>
+            <div className="mt-4">
+              <p className="text-sm leading-relaxed text-foreground whitespace-pre-wrap">
+                {quote}
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
+    </>
+  );
+};
 
 export const InfiniteMovingCards = ({
   items,
@@ -15,7 +78,7 @@ export const InfiniteMovingCards = ({
   items: {
     quote: string;
     name: string;
-    title: string;
+    title?: string;
     linkedin?: string;
   }[];
   direction?: "left" | "right";
@@ -90,18 +153,18 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[280px] sm:w-[320px] md:w-[350px] lg:w-[400px] xl:w-[450px] max-w-full shrink-0 rounded-xl md:rounded-2xl border border-border bg-card/80 backdrop-blur-sm px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 hover:bg-card transition-colors"
+            className="relative w-[280px] sm:w-[320px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-[220px] max-w-full shrink-0 rounded-xl md:rounded-2xl border border-border bg-card/80 backdrop-blur-sm px-4 py-4 sm:px-6 sm:py-5 md:px-8 md:py-6 hover:bg-card transition-colors"
             key={item.name}
           >
-            <blockquote>
+            <blockquote className="h-full flex flex-col">
               <div
                 aria-hidden="true"
                 className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <span className="relative z-20 text-xs sm:text-sm leading-[1.6] font-normal text-foreground">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-4 sm:mt-5 md:mt-6 flex flex-row items-end justify-between min-h-[3rem]">
+              <div className="flex-1">
+                <QuoteText quote={item.quote} name={item.name} />
+              </div>
+              <div className="relative z-20 mt-1 flex flex-row items-end justify-between min-h-[3rem]">
                 <span className="flex flex-col gap-1">
                   <span className="text-xs sm:text-sm leading-[1.6] font-semibold text-foreground">
                     {item.name}
