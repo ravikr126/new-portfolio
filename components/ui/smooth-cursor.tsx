@@ -92,9 +92,14 @@ export function SmoothCursor({
   const [isMoving, setIsMoving] = useState(false);
   const lastMousePos = useRef<Position>({ x: 0, y: 0 });
   const velocity = useRef<Position>({ x: 0, y: 0 });
-  const lastUpdateTime = useRef(Date.now());
+  const lastUpdateTime = useRef(0);
   const previousAngle = useRef(0);
   const accumulatedRotation = useRef(0);
+
+  // Initialize time on client side
+  useEffect(() => {
+    lastUpdateTime.current = Date.now();
+  }, []);
 
   const cursorX = useSpring(0, springConfig);
   const cursorY = useSpring(0, springConfig);

@@ -36,7 +36,7 @@ export default function Marquee({ items, speed = 80 }: Props) {
           >
             {[...items, ...items].map((item, i) => (
               <span
-                key={i}
+                key={`marquee-item-${i}-${item}`}
                 className="text-base font-medium text-white flex items-center gap-3"
               >
                 <span className="text-white/90 text-lg">✦</span>

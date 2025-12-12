@@ -84,7 +84,7 @@ const QuoteText = ({ quote, name }: { quote: string; name: string }) => {
 export const InfiniteMovingCards = ({
   items,
   direction = "left",
-  speed = "fast",
+  speed = "slow",
   pauseOnHover = true,
   className,
 }: {

@@ -7,6 +7,8 @@ import { FaLinkedin, FaGithub, FaTwitter, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import FixedWidthWrapper from "@/components/Common/FixedWidthWrapper";
 import { AuroraText } from "@/components/ui/aurora-text";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
+import { AboutPageData } from "@/data/constantData";
 
 interface ContributionData {
   date: string;
@@ -32,10 +34,15 @@ export default function About() {
   // GitHub contributions state
   const [contributions, setContributions] = useState<ContributionData[]>([]);
   const [totalContributions, setTotalContributions] = useState(0);
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedYear, setSelectedYear] = useState(2024); // Default to current year, will update on client
   const [availableYears, setAvailableYears] = useState<number[]>([]);
   const [loading, setLoading] = useState(true);
   const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false);
+
+  // Set current year on client side
+  useEffect(() => {
+    setSelectedYear(new Date().getFullYear());
+  }, []);
 
   // Fetch GitHub contributions data
   const fetchContributions = useCallback(async (year?: number) => {
@@ -135,7 +142,7 @@ export default function About() {
 
   return (
     <section className="py-20 px-4">
-      <FixedWidthWrapper>
+      <FixedWidthWrapper className="px-10 mt-8">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Main content */}
           <div className="space-y-6 order-2 lg:order-1">
@@ -216,7 +223,10 @@ export default function About() {
 
           {/* Right Column - GitHub Contributions Heatmap */}
           <div className="order-1 lg:order-2" ref={imageRef}>
-            <motion.div 
+             <AnimatedTestimonials testimonials={AboutPageData} />
+          </div>
+        </div>
+        <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -311,6 +321,7 @@ export default function About() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.001 }}
+                        suppressHydrationWarning
                       />
                     ))}
                   </div>
@@ -332,8 +343,6 @@ export default function About() {
                 <span>More</span>
               </div>
             </motion.div>
-          </div>
-        </div>
       </FixedWidthWrapper>
     </section>
   );
