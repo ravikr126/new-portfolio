@@ -1,12 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useRef } from 'react'
+import { FocusCards } from '@/components/ui/focus-cards';
 
 export default function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
 
   const projects = [
     {
@@ -53,46 +51,7 @@ export default function Projects() {
         <h1 ref={titleRef} className="text-4xl md:text-6xl font-bold text-center mb-16">
           My <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Projects</span>
         </h1>
-        
-        <div ref={projectsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="project-item group rounded-xl border border-border bg-background overflow-hidden hover:shadow-lg transition-all duration-300"
-            >
-              <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 relative overflow-hidden flex items-center justify-center">
-                <div className="text-6xl">{project.image}</div>
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-              </div>
-              <div className="p-6 space-y-3">
-                <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 text-xs bg-muted rounded-md"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex space-x-2 pt-2">
-                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
-                    View Project
-                  </button>
-                  <button className="px-4 py-2 border border-border rounded-lg text-sm font-medium hover:bg-accent transition-colors">
-                    Source Code
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <FocusCards cards={projects} />
       </div>
     </div>
   )
